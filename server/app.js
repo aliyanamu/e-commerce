@@ -14,7 +14,7 @@ const indexRouter = require('./routes/index'),
       categoriesRouter = require('./routes/categories'),
       transactionsRouter = require('./routes/transactions');
 
-const port = 3000;
+const PORT = 3000 || process.env.PORT;
 
 //Connecting to Mongoose
 const mongoose   = require('mongoose'),
@@ -28,8 +28,8 @@ db.once('open', function() {
   console.log('We are connected');
 });
 
-app.listen (port, () => {
-  console.log(`Application listening on port: ${port}`);
+app.listen (PORT, () => {
+  console.log(`Application listening on port: ${PORT}`);
 });
 
 app
