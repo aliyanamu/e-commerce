@@ -20,8 +20,6 @@ module.exports = {
   },
 
   insert: (req, res) => {
-    console.log(name, email, password, phone);
-    console.log(typeof name, typeof email, typeof password, typeof phone);
 
     User.create(
       {
