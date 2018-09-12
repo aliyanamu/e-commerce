@@ -1,4 +1,4 @@
-const hashPass = require("../helpers/hashPass");
+let hashPass = require("../helpers/hashPass");
 
 const mongoose = require("mongoose"),
   Schema = mongoose.Schema;
