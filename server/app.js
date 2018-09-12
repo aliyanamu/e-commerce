@@ -5,7 +5,6 @@ const express = require('express'),
 
 const cors = require('cors'),
       jwt = require('jsonwebtoken'),
-      request = require('request');
       bodyParser= require('body-parser');
 
 const indexRouter = require('./routes/index'),
