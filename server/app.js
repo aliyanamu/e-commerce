@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 const express = require('express'),
       app = express();
 
@@ -13,7 +11,7 @@ const indexRouter = require('./routes/index'),
       categoriesRouter = require('./routes/categories'),
       transactionsRouter = require('./routes/transactions');
 
-let PORT = 3000 || process.env.PORT;
+let PORT = 3000 || PORT;
 
 //Connecting to Mongoose
 const mongoose   = require('mongoose'),
