@@ -17,7 +17,7 @@ const PORT = 3000 || process.env.PORT;
 
 //Connecting to Mongoose
 const mongoose   = require('mongoose'),
-      url = 'mongodb://localhost:27017/e-commerce';
+      url = `mongodb://illion01:illion01@ds255262.mlab.com:55262/e-commerce`;
 
 mongoose.connect(url,{ useNewUrlParser: true });
 
