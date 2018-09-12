@@ -3,7 +3,7 @@ require('dotenv').config();
 const crypto = require('crypto');
 
 const hashPass = (password)=> {
-    const hash = crypto.createHmac('sha256',process.env.PASSWORD)
+    const hash = crypto.createHmac('sha256',secret)
                         .update(password)
                         .digest('hex')
     return hash
