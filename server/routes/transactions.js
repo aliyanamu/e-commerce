@@ -1,6 +1,6 @@
 const express = require('express'),
     router = express.Router(),
-    { list, insert, update, remove } = require('../controllers/transactions');
+    { list, insert, remove } = require('../controllers/transactions');
 
 /* GET users listing. */
 router
@@ -8,7 +8,7 @@ router
     
     .post('/', insert)
 
-    .put('/:id', update)
+    // .put('/:id', update)
 
     .delete('/:id', remove)
 

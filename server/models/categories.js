@@ -4,7 +4,8 @@ const mongoose = require('mongoose'),
 const categoryScheme = new Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     itemlist: [{
         type: Schema.Types.ObjectId,

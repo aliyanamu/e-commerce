@@ -1,13 +1,13 @@
-const Customer = require('../models/customers'),
+const Item = require('../models/items'),
       ObjectId = require('mongodb').ObjectId;
 
 module.exports = {
 
     list: (req, res) => {
-        Customer.find( (err, customers) => {
+        Item.find( (err, items) => {
             if (!err) {
                 res.status(200).json({
-                    customers: customers
+                    items: items
                 })
             } else {
                 res.status(500).json({
@@ -18,16 +18,15 @@ module.exports = {
     },
 
     insert: (req, res) => {
-        Customer.create({
+        Item.create({
             name: req.body.name,
-            memberid: req.body.memberid,
-            address: req.body.address,
-            zipcode: req.body.zipcode,
-            phone: req.body.phone
+            desc: req.body.desc,
+            price: req.body.price,
+            stock: req.body.stock
         }, function (err) {
             if (!err) {
                 res.status(200).json({
-                    message: `succesfully added customer: ${req.body.name}`
+                    message: `succesfully added item: ${req.body.name}`
                 })
             } else {
                 res.status(500).json({
@@ -40,18 +39,17 @@ module.exports = {
     update: (req, res) => {  
         const upd = {
             name: req.body.name,
-            memberid: req.body.memberid,
-            address: req.body.address,
-            zipcode: req.body.zipcode,
-            phone: req.body.phone
+            desc: req.body.desc,
+            price: req.body.price,
+            stock: req.body.stock
         }
 
-        Customer.updateOne({
+        Item.updateOne({
             _id: ObjectId(req.params.id)
         }, upd, function(err) {
             if (!err) {
                 res.status(200).json({
-                    message: `succesfully updated customer: ${req.body.name}`
+                    message: `succesfully updated item: ${req.body.name}`
                 })
             } else {
                 res.status(500).json({
@@ -62,12 +60,12 @@ module.exports = {
     },
 
     remove: (req, res) => {
-        Customer.deleteOne({
+        Item.deleteOne({
             _id: ObjectId(req.params.id)
         }, function(err) {
             if (!err) {
                 res.status(200).json({
-                    message: `succesfully deleted customer`
+                    message: `succesfully deleted item`
                 })
             } else {
                 res.status(500).json({

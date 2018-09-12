@@ -4,8 +4,7 @@ const mongoose = require('mongoose'),
 const transScheme = new Schema({
     user: {
         type: Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
+        ref: 'User'
     },
     itemlist: [{
         type: Schema.Types.ObjectId,

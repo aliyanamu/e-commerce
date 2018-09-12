@@ -4,9 +4,11 @@ const mongoose = require('mongoose'),
 const itemScheme = new Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     desc: String,
+    price: Number,
     stock: Number
 }, {
     timestamps: true
