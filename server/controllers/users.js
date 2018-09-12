@@ -3,6 +3,7 @@ const hashPass = require("../helpers/hashPass");
 const User = require("../models/users"),
   ObjectId = require("mongodb").ObjectId;
 
+  console.log(hashPass('apaaja'))
 module.exports = {
   list: (req, res) => {
     User.find()
