@@ -1,7 +1,7 @@
-const hashPass = require('../helpers/hashPass')
+const hashPass = require("../helpers/hashPass");
 
 const User = require("../models/users"),
-      ObjectId = require("mongodb").ObjectId;
+  ObjectId = require("mongodb").ObjectId;
 
 module.exports = {
   list: (req, res) => {
@@ -19,10 +19,13 @@ module.exports = {
   },
 
   insert: (req, res) => {
+    console.log(name, email, password, phone);
+    console.log(typeof name, typeof email, typeof password, typeof phone);
+
     User.create({
       name: req.body.name,
       email: req.body.email,
-      password: hashPass(req.body.password),
+      password: req.body.password,
       phone: req.body.phone
     })
       .then(user => {
@@ -41,7 +44,7 @@ module.exports = {
     const upd = {
       name: req.body.name,
       email: req.body.email,
-      password: hashPass(req.body.password),
+      password: req.body.password,
       phone: req.body.phone
     };
     User.updateOne(
