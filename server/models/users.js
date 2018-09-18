@@ -7,18 +7,22 @@ const userScheme = new Schema(
   {
     name: {
       type: String,
-      required: true
+      required: [true, 'name is required']
     },
     email: {
       type: String,
-      required: true,
-      unique: true
+      unique: [true, `email is already exists`],
+      required: [true, 'email is required']
     },
-    password: {
+    password:{
       type: String,
-      required: true
+      minlength: [5, 'password min 5 character'],
+      required: [true, 'password is required'],
     },
-    phone: String
+    phone: {
+      type: String,
+      required: [true, 'phone is required']
+    }
   },
   {
     timestamps: true
@@ -29,6 +33,11 @@ userScheme.pre("save", function(next) {
   this.password = hashPass(this.password);
   next();
 });
+
+// userScheme.pre("updateOne", function(next) {
+//   this.password = hashPass(this.password);
+//   next();
+// });
 
 const User = mongoose.model("User", userScheme);
 module.exports = User;

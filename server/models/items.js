@@ -8,6 +8,9 @@ const itemScheme = new Schema({
         unique: true
     },
     desc: String,
+    imageurl: {
+        type: String,
+    }, 
     price: Number,
     stock: Number
 }, {

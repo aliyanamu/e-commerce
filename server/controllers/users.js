@@ -1,9 +1,10 @@
+require('dotenv').config();
 let hashPass = require("../helpers/hashPass");
 
 const User = require("../models/users"),
+  jwt = require('jsonwebtoken'),
   ObjectId = require("mongodb").ObjectId;
 
-console.log(hashPass("apaaja"));
 module.exports = {
   list: (req, res) => {
     User.find()
@@ -20,24 +21,48 @@ module.exports = {
   },
 
   insert: (req, res) => {
-
-    User.create(
-      {
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password,
-        phone: req.body.phone
-      },
-      function(err) {
+    User.create({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+      phone: req.body.phone
+    })
+      .then(() => {
         if (!err) {
           res.status(200).json({
             message: `succesfully added user: ${req.body.name}`
           });
-        } else {
-          res.status(500).json({
-            message: err.message
-          });
         }
+      })
+      .catch(err => {
+        res.status(500).json({
+          message: err.message
+        });
+      });
+  },
+
+  login: function(req, res) {
+    User.findOne({
+      email: req.body.email,
+      password: hashPass(req.body.password)
+    })
+      .then(user => {
+        console.log(user._id)
+        jwt.sign({
+          userId: user._id
+        }, process.env.ACCESS_KEY,
+          function(err, token) {
+            res.status(200).json({
+              name: user.name,
+              token
+            });
+          }
+        );
+      })
+      .catch(function() {
+        res.status(500).json({
+          message: `email and password didn't match`
+        });
       });
   },
 

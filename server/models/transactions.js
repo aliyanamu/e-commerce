@@ -4,12 +4,12 @@ const mongoose = require('mongoose'),
 const transScheme = new Schema({
     user: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        required: true
     },
     itemlist: [{
         type: Schema.Types.ObjectId,
-        ref: 'Item',
-        required: true
+        ref: 'Item'
     }]
 }, {
     timestamps: true

@@ -18,6 +18,24 @@ module.exports = {
       });
   },
 
+  findById: (req, res) => {
+    Category.findOne({
+      _id: ObjectId(req.params.id)
+    })
+      .populate("itemlist")
+      .exec(function(err, categories) {
+        if (!err) {
+          res.status(200).json({
+            categories: categories
+          });
+        } else {
+          res.status(500).json({
+            message: err.message
+          });
+        }
+      });
+  },
+
   insert: (req, res) => {
     let cat = new Category({
       name: req.body.name
@@ -37,7 +55,6 @@ module.exports = {
   },
 
   update: (req, res) => {
-  
     const upd = {
       name: req.body.name,
       itemlist: req.body.itemlist

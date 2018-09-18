@@ -21,10 +21,12 @@ module.exports = {
         Item.create({
             name: req.body.name,
             desc: req.body.desc,
+            imageurl: req.body.imageurl,
             price: req.body.price,
             stock: req.body.stock
         }, function (err) {
             if (!err) {
+                console.log(typeof req.body.imageurl)
                 res.status(200).json({
                     message: `succesfully added item: ${req.body.name}`
                 })
@@ -40,6 +42,7 @@ module.exports = {
         const upd = {
             name: req.body.name,
             desc: req.body.desc,
+            imageurl: req.body.imageurl,
             price: req.body.price,
             stock: req.body.stock
         }

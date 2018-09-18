@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:700,400' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+  <title>E-commerce</title>
+</head>
+
+<body>
+  
+  <header class="header-bar">
+    <nav class="navbar navbar-expand-lg bg-light">
+        
+      <a class="navbar-brand" @click="getHome"><i class="fas fa-stroopwafel"></i></a>
+  
+          <ul class="mr-auto mt-2 mt-lg-0">
+              <li class="nav-item active">
+              <a class="nav-link" @click="getShirts">Shirts</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" @click="getDresses">Dresses</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" @click="getJeans">Jeans</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" @click="getJackets">Jackets</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" @click="getGymwears">Gymwears</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" @click="getSweaters">Sweaters</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" @click="getShoes">Shoes</a>
+              </li>
+          </ul>
+          
+          <a v-if="!isLogin" style="margin-right: 10px; cursor:pointer;" @click="openLog">Login</a>
+          <a v-if="!isLogin" style="margin-right: 10px; cursor:pointer;" @click="openReg">Register</a>
+          <a href="" v-if="isLogin"><i class="fas fa-shopping-cart"></i></a>
+          <a href="" v-if="isLogin" @click="logout">Logout</a>
+        </nav>
+  
+      <modal-register v-if="isOpenReg" @givestatusregist="statusRegBtn"></modal-register>
+      <modal-login v-if="isOpenLog" @givestatus="statusLogBtn"></modal-login>
+    <div class="cart"><i class="fas fa-shopping-cart"></i></div>
+  </header>
+
+  <div class="container" id="app-list">
+    <div class="list">
+      <article class="list--item">
+        <figure>
+          <img src="//placehold.it/250x250" alt="">
+          <header>
+            <div class="floater">
+
+            </div>
+            <h2>Title</h2>
+          </header>
+          <figcaption>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          </figcaption>
+        </figure>
+      </article>
+      <article class="list--item">
+        <figure>
+          <img src="//placehold.it/250x250" alt="">
+          <header>
+            <div class="floater">
+
+            </div>
+            <h2>Title</h2>
+          </header>
+          <figcaption>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          </figcaption>
+        </figure>
+      </article>
+      <article class="list--item">
+        <figure>
+          <img src="//placehold.it/250x250" alt="">
+          <header>
+            <div class="floater">
+
+            </div>
+            <h2>Title</h2>
+          </header>
+          <figcaption>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          </figcaption>
+        </figure>
+      </article>
+      <article class="list--item">
+        <figure>
+          <img src="//placehold.it/250x250" alt="">
+          <header>
+            <div class="floater">
+
+            </div>
+            <h2>Title</h2>
+          </header>
+          <figcaption>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          </figcaption>
+        </figure>
+      </article>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+    crossorigin="anonymous"></script>
+  <script src="./components/login.js"></script>
+  <script src="./components/register.js"></script>
+  <script src="./components/navbar.js"></script>
+</body>
+
+</html>
